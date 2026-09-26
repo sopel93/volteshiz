@@ -1,0 +1,4 @@
+-keep class pl.volt.tuner.ShellService { *; }
+-keep class pl.volt.tuner.IShellService { *; }
+-keep class pl.volt.tuner.IShellService$Stub { *; }
+-keep class rikka.shizuku.** { *; }

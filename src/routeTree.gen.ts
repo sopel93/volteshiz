@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DnsRouteImport } from './routes/dns'
+import { Route as PlikiRouteImport } from './routes/pliki'
 import { Route as PomiarRouteImport } from './routes/pomiar'
 import { Route as TunerRouteImport } from './routes/tuner'
 import { Route as ApiSpeedDownRouteImport } from './routes/api/speed/down'
@@ -25,6 +26,11 @@ const IndexRoute = IndexRouteImport.update({
 const DnsRoute = DnsRouteImport.update({
   id: '/dns',
   path: '/dns',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlikiRoute = PlikiRouteImport.update({
+  id: '/pliki',
+  path: '/pliki',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PomiarRoute = PomiarRouteImport.update({
@@ -56,6 +62,7 @@ const ApiSpeedUpRoute = ApiSpeedUpRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/dns': typeof DnsRoute
+  '/pliki': typeof PlikiRoute
   '/pomiar': typeof PomiarRoute
   '/tuner': typeof TunerRoute
   '/api/speed/down': typeof ApiSpeedDownRoute
@@ -65,6 +72,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/dns': typeof DnsRoute
+  '/pliki': typeof PlikiRoute
   '/pomiar': typeof PomiarRoute
   '/tuner': typeof TunerRoute
   '/api/speed/down': typeof ApiSpeedDownRoute
@@ -75,6 +83,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/dns': typeof DnsRoute
+  '/pliki': typeof PlikiRoute
   '/pomiar': typeof PomiarRoute
   '/tuner': typeof TunerRoute
   '/api/speed/down': typeof ApiSpeedDownRoute
@@ -86,6 +95,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/dns'
+    | '/pliki'
     | '/pomiar'
     | '/tuner'
     | '/api/speed/down'
@@ -95,6 +105,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/dns'
+    | '/pliki'
     | '/pomiar'
     | '/tuner'
     | '/api/speed/down'
@@ -104,6 +115,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/dns'
+    | '/pliki'
     | '/pomiar'
     | '/tuner'
     | '/api/speed/down'
@@ -114,6 +126,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DnsRoute: typeof DnsRoute
+  PlikiRoute: typeof PlikiRoute
   PomiarRoute: typeof PomiarRoute
   TunerRoute: typeof TunerRoute
   ApiSpeedDownRoute: typeof ApiSpeedDownRoute
@@ -135,6 +148,13 @@ declare module '@tanstack/react-router' {
       path: '/dns'
       fullPath: '/dns'
       preLoaderRoute: typeof DnsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pliki': {
+      id: '/pliki'
+      path: '/pliki'
+      fullPath: '/pliki'
+      preLoaderRoute: typeof PlikiRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pomiar': {
@@ -178,6 +198,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DnsRoute: DnsRoute,
+  PlikiRoute: PlikiRoute,
   PomiarRoute: PomiarRoute,
   TunerRoute: TunerRoute,
   ApiSpeedDownRoute: ApiSpeedDownRoute,

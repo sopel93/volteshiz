@@ -1,12 +1,11 @@
 import type { ReactNode } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Gauge, Radio, Settings2, Shield } from "lucide-react";
+import { FileCode2, Radio, Settings2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const TABS = [
-  { to: "/", label: "Start", icon: Radio },
-  { to: "/pomiar", label: "Pomiar", icon: Gauge },
-  { to: "/dns", label: "DNS", icon: Shield },
+  { to: "/", label: "Android", icon: Radio },
+  { to: "/pliki", label: "Pliki", icon: FileCode2 },
   { to: "/tuner", label: "Tuner", icon: Settings2 },
 ] as const;
 
@@ -22,7 +21,7 @@ export function AppShell({ children }: { children: ReactNode }) {
         className="fixed inset-x-0 bottom-0 z-40 mx-auto max-w-lg border-t border-border bg-bg/95 pb-[env(safe-area-inset-bottom)] pr-16 backdrop-blur-md"
         aria-label="Nawigacja"
       >
-        <ul className="grid grid-cols-4 px-2 pt-1">
+        <ul className="grid grid-cols-3 px-2 pt-1">
           {TABS.map((tab) => {
             const active =
               tab.to === "/"

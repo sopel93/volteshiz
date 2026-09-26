@@ -19,7 +19,7 @@ export const Route = createRootRoute({
       {
         name: "description",
         content:
-          "Tuner sieci komórkowej dla Realme 9 Pro 5G — pomiar łącza, wyścig DNS i ustawienia, które realnie skracają czas ładowania.",
+          "VOLT — natywna aplikacja Android (Kotlin + Shizuku) do VoLTE / VoWiFi na realme 9 Pro 5G.",
       },
       { name: "theme-color", content: "#09090b" },
       { name: "apple-mobile-web-app-capable", content: "yes" },
